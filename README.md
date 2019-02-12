@@ -1,6 +1,12 @@
 # Pursuit-Core-iOS-RaceReviews
 RaceReviews uses the Firebase Auth,  Cloud Firestore database to create users. Users are able to add an annotations on a MapView with a race review.
 
+## Installation Procedures for this app
+
+- clone this repo 
+- all Pods are included 
+- open up the RaceReviews.xcworkspace project and run the app on your simulator or device
+
 **Checklist**  
 - [x] create the Xcode project
 - [x] create firebase console project 
