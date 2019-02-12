@@ -46,30 +46,45 @@ pod 'Firebase/Storage'
 ## Race Model 
 
 ```swift 
-// raceId: String
-// name: String
-// type: String
-// price: Double
-// reviewerId: String // userId
-// review: String
-// lat: Double
-// lon: Double
+import Foundation
+import CoreLocation
+
+enum RaceType {
+  case swimming
+  case biking
+  case running
+  case obstacle
+  case other
+}
 
 struct Race {
   let name: String
+  let review: String
+  let type: RaceType
   let lat: Double
   let lon: Double
+  let reviewerId: String
   
-  init(name: String, lat: Double, lon: Double) {
+  init(name: String, review: String, type: RaceType, lat: Double, lon: Double, reviewerId: String) {
     self.name = name
+    self.review = review
+    self.type = type
     self.lat = lat
     self.lon = lon
+    self.reviewerId = reviewerId
   }
   
   init(dict: [String: Any]) {
     self.name = dict["name"] as? String ?? "no race name"
+    self.review = dict["review"] as? String ?? "no race review"
+    self.type = dict["type"] as? RaceType ?? .other
     self.lat = dict["lat"] as? Double ?? 0
     self.lon = dict["lon"] as? Double ?? 0
+    self.reviewerId = dict["reviewerId"] as? String ?? "no reviewerId"
+  }
+  
+  public var coordinate: CLLocationCoordinate2D {
+    return CLLocationCoordinate2DMake(lat, lon)
   }
 }
 ```
