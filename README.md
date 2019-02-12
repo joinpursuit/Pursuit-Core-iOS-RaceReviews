@@ -27,6 +27,7 @@ pod 'Firebase/Storage'
 - [x] create firebase console project 
 - [x] add google service plist file to xcode
 - [x] add firebase sdk to the xcode project using cocoapods (firebase/core, /auth, /firestore, /storage)
+- [ ] confirm firebase installation after importing firebase into the Xcode project
 - [ ] add email/password authentication to firebase project
 - [x] create .xib login view
 - [ ] user can create an authenticated account using their email and password
