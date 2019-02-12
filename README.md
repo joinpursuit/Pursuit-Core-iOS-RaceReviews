@@ -1,5 +1,5 @@
 # Pursuit-Core-iOS-RaceReviews
-RaceReviews uses the Firebase Auth,  Cloud Firestore database to create users. Users are able to add an annotations on a MapView with a race review.
+RaceReviews uses the Firebase Authentication and Cloud Firestore database to create users. Authenticated users are able to add an annotation on a MapView along with a race review.
 
 ## Lessons Links
 
@@ -27,23 +27,23 @@ pod 'Firebase/Storage'
 - [x] create firebase console project 
 - [x] add google service plist file to xcode
 - [x] add firebase sdk to the xcode project using cocoapods (firebase/core, /auth, /firestore, /storage)
-- [ ] confirm firebase installation after importing firebase into the Xcode project
-- [ ] add email/password authentication to firebase project
+- [ ] confirm firebase installation in the firebase console after importing firebase into the Xcode project
+- [ ] add email/password authentication to the firebase project
 - [x] create .xib login view
 - [ ] user can create an authenticated account using their email and password
-- [ ] user is created in cloudstore database
+- [ ] user is created in cloud firestore database after successfullly creating an account
 - [ ] present the race reviews tab controller if login is successful
-- [ ] architect login flow in the app delegate base on current user sign in status
-- [ ] user can sign out
+- [ ] architect login flow in the app delegate base on current user sign in state
+- [ ] user can sign out of the app 
 - [ ] present the login view controller when the user signs out
-- [ ] existing user can sign in 
-- [ ] race review creation UI (firebase database)
+- [ ] existing user can sign in to the app 
+- [ ] race review creation UI includes textfield to enter name and text view for review (firebase database)
 - [ ] user can create a review (create)
 - [ ] user can see an annotation on a MapView of their created review (read)
-- [ ] user can udpate a review (update) (only if userId == reviewerId)
-- [ ] user can delete a review (delete) (only if userId == reviewerId)
+- [ ] user can udpate a review (only if userId == reviewerId) (update) 
+- [ ] user can delete a review (only if userId == reviewerId) (delete) 
 
-## Race Model 
+## Race Review Model 
 
 ```swift 
 import Foundation
