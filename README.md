@@ -13,6 +13,15 @@ RaceReviews uses the Firebase Auth,  Cloud Firestore database to create users. U
 - all Pods are included 
 - open up the RaceReviews.xcworkspace project and run the app on your simulator or device
 
+## Firebase Cocoapods used 
+
+```
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+```
+
 **Checklist**  
 - [x] create the Xcode project
 - [x] create firebase console project 
