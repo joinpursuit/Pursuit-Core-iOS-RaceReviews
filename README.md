@@ -1,5 +1,5 @@
 # Pursuit-Core-iOS-RaceReviews
-RaceReviews uses the Firebase Auth,  Cloud Firestore database to create users. Users are able to add an annotations on a MapView with a race review.
+RaceReviews uses the Firebase Authentication and Cloud Firestore database to create users. Authenticated users are able to add an annotation on a MapView along with a race review.
 
 ## Lessons Links
 
@@ -13,53 +13,78 @@ RaceReviews uses the Firebase Auth,  Cloud Firestore database to create users. U
 - all Pods are included 
 - open up the RaceReviews.xcworkspace project and run the app on your simulator or device
 
+## Firebase Cocoapods used 
+
+```
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+```
+
 **Checklist**  
 - [x] create the Xcode project
 - [x] create firebase console project 
 - [x] add google service plist file to xcode
 - [x] add firebase sdk to the xcode project using cocoapods (firebase/core, /auth, /firestore, /storage)
-- [ ] add email/password authentication to firebase project
+- [ ] confirm firebase installation in the firebase console after importing firebase into the Xcode project
+- [ ] add email/password authentication to the firebase project
 - [x] create .xib login view
 - [ ] user can create an authenticated account using their email and password
-- [ ] user is created in cloudstore database
+- [ ] user is created in cloud firestore database after successfullly creating an account
 - [ ] present the race reviews tab controller if login is successful
-- [ ] architect login flow in the app delegate base on current user sign in status
-- [ ] user can sign out
+- [ ] architect login flow in the app delegate base on current user sign in state
+- [ ] user can sign out of the app 
 - [ ] present the login view controller when the user signs out
-- [ ] existing user can sign in 
-- [ ] race review creation UI (firebase database)
+- [ ] existing user can sign in to the app 
+- [ ] race review creation UI includes textfield to enter name and text view for review (firebase database)
 - [ ] user can create a review (create)
 - [ ] user can see an annotation on a MapView of their created review (read)
-- [ ] user can udpate a review (update) (only if userId == reviewerId)
-- [ ] user can delete a review (delete) (only if userId == reviewerId)
+- [ ] user can udpate a review (only if userId == reviewerId) (update) 
+- [ ] user can delete a review (only if userId == reviewerId) (delete) 
 
-## Race Model 
+## Race Review Model 
 
 ```swift 
-// raceId: String
-// name: String
-// type: String
-// price: Double
-// reviewerId: String // userId
-// review: String
-// lat: Double
-// lon: Double
+import Foundation
+import CoreLocation
+
+enum RaceType {
+  case swimming
+  case biking
+  case running
+  case obstacle
+  case other
+}
 
 struct Race {
   let name: String
+  let review: String
+  let type: RaceType
   let lat: Double
   let lon: Double
+  let reviewerId: String
   
-  init(name: String, lat: Double, lon: Double) {
+  init(name: String, review: String, type: RaceType, lat: Double, lon: Double, reviewerId: String) {
     self.name = name
+    self.review = review
+    self.type = type
     self.lat = lat
     self.lon = lon
+    self.reviewerId = reviewerId
   }
   
   init(dict: [String: Any]) {
     self.name = dict["name"] as? String ?? "no race name"
+    self.review = dict["review"] as? String ?? "no race review"
+    self.type = dict["type"] as? RaceType ?? .other
     self.lat = dict["lat"] as? Double ?? 0
     self.lon = dict["lon"] as? Double ?? 0
+    self.reviewerId = dict["reviewerId"] as? String ?? "no reviewerId"
+  }
+  
+  public var coordinate: CLLocationCoordinate2D {
+    return CLLocationCoordinate2DMake(lat, lon)
   }
 }
 ```
