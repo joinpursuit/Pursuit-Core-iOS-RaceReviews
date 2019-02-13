@@ -13,6 +13,18 @@ RaceReviews uses the Firebase Authentication and Cloud Firestore database to cre
 - all Pods are included 
 - open up the RaceReviews.xcworkspace project and run the app on your simulator or device
 
+**Instructions on replacing the GoogleService-Info.plist file in this repo with your own**   
+1. clone this repo
+1. make sure the app runs on a simulator or device
+1. sign out of the RaceReviews app 
+1. delete the GoogleService-Info.plist from Xcode => “Move to Trash”
+1. navigate to https://console.firebase.google.com/u/1/ , click on the RaceReviews app, then go to the **Project Settings** and download and drag your **GoogleService-Info.plist** to Xcode beneath the **Info.plist**
+1. make sure you **save as** **GoogleService-Info.plist** and not **GoogleService-Info (1).plist** in the case a file already exist at the download path 
+1. make sure **Copy items if needed**, **Create groups** and **Add to targets** are checked
+1. run the app in the simulator or on your device
+1. create an new authentication account and verify the user was created under “Users” in the Authentication section of the Firebase dashboard
+
+
 ## Firebase Cocoapods used 
 
 ```
@@ -27,16 +39,16 @@ pod 'Firebase/Storage'
 - [x] create firebase console project 
 - [x] add google service plist file to xcode
 - [x] add firebase sdk to the xcode project using cocoapods (firebase/core, /auth, /firestore, /storage)
-- [ ] confirm firebase installation in the firebase console after importing firebase into the Xcode project
-- [ ] add email/password authentication to the firebase project
+- [x] confirm firebase installation in the firebase console after importing firebase into the Xcode project
+- [x] add email/password authentication to the firebase project
 - [x] create .xib login view
-- [ ] user can create an authenticated account using their email and password
+- [x] user can create an authenticated account using their email and password
 - [ ] user is created in cloud firestore database after successfullly creating an account
-- [ ] present the race reviews tab controller if login is successful
-- [ ] architect login flow in the app delegate base on current user sign in state
-- [ ] user can sign out of the app 
-- [ ] present the login view controller when the user signs out
-- [ ] existing user can sign in to the app 
+- [x] present the race reviews tab controller if login is successful
+- [x] architect login flow in the app delegate base on current user sign in state
+- [x] user can sign out of the app 
+- [x] present the login view controller when the user signs out
+- [x] existing user can sign in to the app 
 - [ ] race review creation UI includes textfield to enter name and text view for review (firebase database)
 - [ ] user can create a review (create)
 - [ ] user can see an annotation on a MapView of their created review (read)
@@ -49,7 +61,7 @@ pod 'Firebase/Storage'
 import Foundation
 import CoreLocation
 
-enum RaceType {
+enum RaceType: CaseIterable {
   case swimming
   case biking
   case running
@@ -57,7 +69,7 @@ enum RaceType {
   case other
 }
 
-struct Race {
+struct RaceReview {
   let name: String
   let review: String
   let type: RaceType
