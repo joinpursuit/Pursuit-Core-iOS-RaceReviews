@@ -61,7 +61,7 @@ pod 'Firebase/Storage'
 import Foundation
 import CoreLocation
 
-enum RaceType {
+enum RaceType: CaseIterable {
   case swimming
   case biking
   case running
@@ -69,7 +69,7 @@ enum RaceType {
   case other
 }
 
-struct Race {
+struct RaceReview {
   let name: String
   let review: String
   let type: RaceType
