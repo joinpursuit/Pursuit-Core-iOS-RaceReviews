@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570A6BAA22131ED700C19886 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A6BA922131ED700C19886 /* UserSession.swift */; };
+		570A6BAC221330E900C19886 /* RaceReviewsTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570A6BAB221330E900C19886 /* RaceReviewsTab.storyboard */; };
+		570A6BAE221332CE00C19886 /* RaceReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A6BAD221332CE00C19886 /* RaceReviewsController.swift */; };
+		570A6BB0221336E600C19886 /* RaceReviewsTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A6BAF221336E600C19886 /* RaceReviewsTabController.swift */; };
+		570A6BB222133A8700C19886 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A6BB122133A8700C19886 /* ProfileViewController.swift */; };
+		570A6BB72213659D00C19886 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A6BB62213659D00C19886 /* DatabaseManager.swift */; };
+		570A6BB92213909600C19886 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A6BB82213909600C19886 /* UIViewController+Alerts.swift */; };
 		57C51A7A2211CD0900FE8CE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C51A792211CD0900FE8CE5 /* AppDelegate.swift */; };
-		57C51A7C2211CD0900FE8CE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C51A7B2211CD0900FE8CE5 /* ViewController.swift */; };
+		57C51A7C2211CD0900FE8CE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C51A7B2211CD0900FE8CE5 /* LoginViewController.swift */; };
 		57C51A7F2211CD0900FE8CE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C51A7D2211CD0900FE8CE5 /* Main.storyboard */; };
 		57C51A812211CD0A00FE8CE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C51A802211CD0A00FE8CE5 /* Assets.xcassets */; };
 		57C51A842211CD0A00FE8CE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C51A822211CD0A00FE8CE5 /* LaunchScreen.storyboard */; };
@@ -21,9 +28,16 @@
 /* Begin PBXFileReference section */
 		4389A5FE503FA7690358B20C /* Pods-RaceReviews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaceReviews.release.xcconfig"; path = "Target Support Files/Pods-RaceReviews/Pods-RaceReviews.release.xcconfig"; sourceTree = "<group>"; };
 		44C8989C651AC7EEE009B6F8 /* Pods_RaceReviews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaceReviews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		570A6BA922131ED700C19886 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		570A6BAB221330E900C19886 /* RaceReviewsTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RaceReviewsTab.storyboard; sourceTree = "<group>"; };
+		570A6BAD221332CE00C19886 /* RaceReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceReviewsController.swift; sourceTree = "<group>"; };
+		570A6BAF221336E600C19886 /* RaceReviewsTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceReviewsTabController.swift; sourceTree = "<group>"; };
+		570A6BB122133A8700C19886 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		570A6BB62213659D00C19886 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		570A6BB82213909600C19886 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		57C51A762211CD0900FE8CE5 /* RaceReviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaceReviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C51A792211CD0900FE8CE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		57C51A7B2211CD0900FE8CE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		57C51A7B2211CD0900FE8CE5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57C51A7E2211CD0900FE8CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57C51A802211CD0A00FE8CE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C51A832211CD0A00FE8CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +60,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570A6BB3221364C300C19886 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				57C51A7B2211CD0900FE8CE5 /* LoginViewController.swift */,
+				570A6BAD221332CE00C19886 /* RaceReviewsController.swift */,
+				570A6BAF221336E600C19886 /* RaceReviewsTabController.swift */,
+				570A6BB122133A8700C19886 /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		570A6BB4221364E200C19886 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				57C51A792211CD0900FE8CE5 /* AppDelegate.swift */,
+				57C51A822211CD0A00FE8CE5 /* LaunchScreen.storyboard */,
+				570A6BAB221330E900C19886 /* RaceReviewsTab.storyboard */,
+				57C51A7D2211CD0900FE8CE5 /* Main.storyboard */,
+				57C51A802211CD0A00FE8CE5 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		570A6BB5221364FE00C19886 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				57C51A8D2211D0DB00FE8CE5 /* LoginView.swift */,
+				57C51A8B2211CDB700FE8CE5 /* LoginView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		57C51A6D2211CD0900FE8CE5 = {
 			isa = PBXGroup;
 			children = (
@@ -67,13 +113,12 @@
 		57C51A782211CD0900FE8CE5 /* RaceReviews */ = {
 			isa = PBXGroup;
 			children = (
-				57C51A792211CD0900FE8CE5 /* AppDelegate.swift */,
-				57C51A7B2211CD0900FE8CE5 /* ViewController.swift */,
-				57C51A8B2211CDB700FE8CE5 /* LoginView.xib */,
-				57C51A8D2211D0DB00FE8CE5 /* LoginView.swift */,
-				57C51A7D2211CD0900FE8CE5 /* Main.storyboard */,
-				57C51A802211CD0A00FE8CE5 /* Assets.xcassets */,
-				57C51A822211CD0A00FE8CE5 /* LaunchScreen.storyboard */,
+				570A6BA922131ED700C19886 /* UserSession.swift */,
+				570A6BB62213659D00C19886 /* DatabaseManager.swift */,
+				570A6BB82213909600C19886 /* UIViewController+Alerts.swift */,
+				570A6BB5221364FE00C19886 /* Views */,
+				570A6BB3221364C300C19886 /* Controllers */,
+				570A6BB4221364E200C19886 /* Supporting Files */,
 				57C51A852211CD0A00FE8CE5 /* Info.plist */,
 				57C51A8F2212027600FE8CE5 /* GoogleService-Info.plist */,
 			);
@@ -86,7 +131,6 @@
 				8EF312F5379FF311E51EA0D3 /* Pods-RaceReviews.debug.xcconfig */,
 				4389A5FE503FA7690358B20C /* Pods-RaceReviews.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -164,6 +208,7 @@
 				57C51A902212027600FE8CE5 /* GoogleService-Info.plist in Resources */,
 				57C51A8C2211CDB700FE8CE5 /* LoginView.xib in Resources */,
 				57C51A7F2211CD0900FE8CE5 /* Main.storyboard in Resources */,
+				570A6BAC221330E900C19886 /* RaceReviewsTab.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,9 +302,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570A6BB72213659D00C19886 /* DatabaseManager.swift in Sources */,
+				570A6BB0221336E600C19886 /* RaceReviewsTabController.swift in Sources */,
 				57C51A8E2211D0DB00FE8CE5 /* LoginView.swift in Sources */,
-				57C51A7C2211CD0900FE8CE5 /* ViewController.swift in Sources */,
+				570A6BAE221332CE00C19886 /* RaceReviewsController.swift in Sources */,
+				57C51A7C2211CD0900FE8CE5 /* LoginViewController.swift in Sources */,
+				570A6BB222133A8700C19886 /* ProfileViewController.swift in Sources */,
 				57C51A7A2211CD0900FE8CE5 /* AppDelegate.swift in Sources */,
+				570A6BB92213909600C19886 /* UIViewController+Alerts.swift in Sources */,
+				570A6BAA22131ED700C19886 /* UserSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

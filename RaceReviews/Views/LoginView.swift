@@ -69,14 +69,19 @@ class LoginView: UIView {
   }
   
   @objc private func loginButtonPressed() {
-    print("login button pressed")
+    print("login button pressed with state: \(accountLoginState)")
     delegate?.didSelectLoginButton(self, accountLoginState: accountLoginState)
   }
   
   @objc private func handleTap(gestureRecognizer: UITapGestureRecognizer) {
-    print("handleTap")
+    accountLoginState = accountLoginState == .newAccount ? .existingAccount : .newAccount
+    switch accountLoginState {
+    case .newAccount:
+      loginButton.setTitle("Create", for: .normal)
+      accountMessageLabel.text = "Login into your account"
+    case .existingAccount:
+      loginButton.setTitle("Login", for: .normal)
+      accountMessageLabel.text = "New User? Create an account"
+    }
   }
-  
-  
-  
 }

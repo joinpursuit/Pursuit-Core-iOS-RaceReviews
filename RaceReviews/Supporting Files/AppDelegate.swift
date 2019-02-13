@@ -7,15 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
+  var usersession: UserSession!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    FirebaseApp.configure()
+    
+    usersession = UserSession()
+    
+    window = UIWindow(frame: UIScreen.main.bounds)
+    // user exist
+    if let _ = usersession.getCurrentUser() {
+      let storyboard = UIStoryboard(name: "RaceReviewsTab", bundle: nil)
+      let raceReviewsTabController = storyboard.instantiateViewController(withIdentifier: "RaceReviewsTabController") as! RaceReviewsTabController
+      window?.rootViewController = raceReviewsTabController
+      // TODO: create a subclass of UITabBarController()
+      // name it "RaceReviewsTabController"
+      // storyboard id should be "RaceReviewsTabController"
+    }
+    
+    // no current user logged in
+    else {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+      // TODO: add to storyboard id "LoginViewController"
+      window?.rootViewController = loginViewController
+    }
+    window?.makeKeyAndVisible()
+    
     return true
   }
 
