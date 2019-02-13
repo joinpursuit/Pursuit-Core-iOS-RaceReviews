@@ -27,16 +27,16 @@ pod 'Firebase/Storage'
 - [x] create firebase console project 
 - [x] add google service plist file to xcode
 - [x] add firebase sdk to the xcode project using cocoapods (firebase/core, /auth, /firestore, /storage)
-- [ ] confirm firebase installation in the firebase console after importing firebase into the Xcode project
-- [ ] add email/password authentication to the firebase project
+- [x] confirm firebase installation in the firebase console after importing firebase into the Xcode project
+- [x] add email/password authentication to the firebase project
 - [x] create .xib login view
 - [ ] user can create an authenticated account using their email and password
 - [ ] user is created in cloud firestore database after successfullly creating an account
-- [ ] present the race reviews tab controller if login is successful
-- [ ] architect login flow in the app delegate base on current user sign in state
-- [ ] user can sign out of the app 
-- [ ] present the login view controller when the user signs out
-- [ ] existing user can sign in to the app 
+- [x] present the race reviews tab controller if login is successful
+- [x] architect login flow in the app delegate base on current user sign in state
+- [x] user can sign out of the app 
+- [x] present the login view controller when the user signs out
+- [x] existing user can sign in to the app 
 - [ ] race review creation UI includes textfield to enter name and text view for review (firebase database)
 - [ ] user can create a review (create)
 - [ ] user can see an annotation on a MapView of their created review (read)
