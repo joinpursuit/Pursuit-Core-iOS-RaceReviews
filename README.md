@@ -18,7 +18,7 @@ RaceReviews uses the Firebase Authentication and Cloud Firestore database to cre
 1. make sure the app runs on a simulator or device
 1. sign out of the RaceReviews app 
 1. delete the GoogleService-Info.plist from Xcode => “Move to Trash”
-1. navigate to https://console.firebase.google.com/u/1/ , go to the **Project Settings** and download and drag your **GoogleService-Info.plist** to Xcode beneath the **Info.plist**
+1. navigate to https://console.firebase.google.com/u/1/ , click on the RaceReviews app, then go to the **Project Settings** and download and drag your **GoogleService-Info.plist** to Xcode beneath the **Info.plist**
 1. make sure you **save as** **GoogleService-Info.plist** and not **GoogleService-Info (1).plist** in the case a file already exist at the download path 
 1. make sure **Copy items if needed**, **Create groups** and **Add to targets** are checked
 1. run the app in the simulator or on your device
