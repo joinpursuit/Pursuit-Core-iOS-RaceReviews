@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddRaceReviewController: UIViewController {
   
@@ -14,6 +15,10 @@ class AddRaceReviewController: UIViewController {
   
   private var raceTypes = [RaceType]()
   private var raceReviewPlaceholderText = "enter your race review"
+  private var selectedRaceType = "other"
+  private var usersession: UserSession!
+  
+  public var coordinate: CLLocationCoordinate2D!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,6 +26,7 @@ class AddRaceReviewController: UIViewController {
     addRaceReview.raceTypePickerView.delegate = self
     addRaceReview.raceNameTextField.becomeFirstResponder()
     configureTextView()
+    usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
   }
   
   private func configureTextView() {
@@ -33,7 +39,30 @@ class AddRaceReviewController: UIViewController {
     dismiss(animated: true)
   }
   
+  // function to create RaceReview and post to the database
   @IBAction func addRaceReviewButtonPressed(_ sender: UIBarButtonItem) {
+    guard let user = usersession.getCurrentUser() else {
+      showAlert(title: "Not Authenticated!", message: "no logged user")
+      return
+    }
+    // TODO: properties we need: textfield info, textview info, pickerview info
+    // all required to create a RaceReview()
+    guard let raceName = addRaceReview.raceNameTextField.text,
+      let review = addRaceReview.reviewTextView.text,
+      !raceName.isEmpty,
+      !review.isEmpty else {
+        showAlert(title: "Missing Fields", message: "Race Name and Review Required")
+        return
+    }
+    
+    // create a RaceReview()
+    let raceReview = RaceReview(name: raceName,
+                                review: review,
+                                type: selectedRaceType,
+                                lat: coordinate.latitude,
+                                lon: coordinate.longitude,
+                                reviewerId: user.uid)
+    DatabaseManager.postRaceReviewToDatabase(raceReview: raceReview)
     dismiss(animated: true)
   }
 }
@@ -55,6 +84,7 @@ extension AddRaceReviewController: UIPickerViewDelegate {
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     print("selected race type: \(RaceType.allCases[row])")
+    selectedRaceType = "\(RaceType.allCases[row])"
   }
 }
 

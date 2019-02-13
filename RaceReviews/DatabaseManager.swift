@@ -24,9 +24,14 @@ final class DatabaseManager {
     return db
   }()
   
-  static func postRaceReviewToDatabase() {
+  static func postRaceReviewToDatabase(raceReview: RaceReview) {
     var ref: DocumentReference? = nil
-    ref = firebaseDB.collection("raceReviews").addDocument(data: ["raceName" : "NYCMarathon"
+    ref = firebaseDB.collection("raceReviews").addDocument(data: ["raceName"    : raceReview.name,
+                                                                  "raceReview"  : raceReview.review,
+                                                                  "reviewerId"  : raceReview.reviewerId,
+                                                                  "latitude"    : raceReview.lat,
+                                                                  "longitude"   : raceReview.lon,
+                                                                  "raceType"    :  raceReview.type
       ], completion: { (error) in
       if let error = error {
         print("posing race failed with error: \(error)")
