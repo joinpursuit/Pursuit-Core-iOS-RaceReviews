@@ -13,6 +13,18 @@ RaceReviews uses the Firebase Authentication and Cloud Firestore database to cre
 - all Pods are included 
 - open up the RaceReviews.xcworkspace project and run the app on your simulator or device
 
+**Instructions on replacing the GoogleService-Info.plist file in this repo with your own**   
+1. clone this repo
+1. make sure the app runs on a simulator or device
+1. sign out of the RaceReviews app 
+1. delete the GoogleService-Info.plist from Xcode => “Move to Trash”
+1. navigate to https://console.firebase.google.com/u/1/ , go to the **Project Settings** and download and drag your **GoogleService-Info.plist** to Xcode beneath the **Info.plist**
+1. make sure you **save as** **GoogleService-Info.plist** and not **GoogleService-Info (1).plist** in the case a file already exist at the download path 
+1. make sure **Copy items if needed**, **Create groups** and **Add to targets** are checked
+1. run the app in the simulator or on your device
+1. create an new authentication account and verify the user was created under “Users” in the Authentication section of the Firebase dashboard
+
+
 ## Firebase Cocoapods used 
 
 ```
