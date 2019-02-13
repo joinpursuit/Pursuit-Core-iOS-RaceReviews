@@ -30,7 +30,7 @@ pod 'Firebase/Storage'
 - [x] confirm firebase installation in the firebase console after importing firebase into the Xcode project
 - [x] add email/password authentication to the firebase project
 - [x] create .xib login view
-- [ ] user can create an authenticated account using their email and password
+- [x] user can create an authenticated account using their email and password
 - [ ] user is created in cloud firestore database after successfullly creating an account
 - [x] present the race reviews tab controller if login is successful
 - [x] architect login flow in the app delegate base on current user sign in state
