@@ -10,6 +10,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add Race Review-->
+        <scene sceneID="YgX-Qv-2SQ">
+            <objects>
+                <viewController storyboardIdentifier="AddRaceReviewController" id="VLv-cF-h98" customClass="AddRaceReviewController" customModule="RaceReviews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mia-jV-UOv" customClass="AddRaceReview" customModule="RaceReviews" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="eh5-Hh-vsN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Race Review" id="9fi-ce-kNg">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="GgC-lA-KbI">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="VLv-cF-h98" id="7F0-cK-8Y1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="AT9-FU-aGy">
+                            <connections>
+                                <action selector="addRaceReviewButtonPressed:" destination="VLv-cF-h98" id="aQR-Nj-ijw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addRaceReview" destination="Mia-jV-UOv" id="NEE-gL-Hkp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PqK-vY-oRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2404" y="-952.17391304347836"/>
+        </scene>
         <!--Race Reviews-->
         <scene sceneID="1kO-CI-w4U">
             <objects>
@@ -31,14 +61,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8t6-gg-voX"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Race Reviews" id="XdU-GK-Ksf"/>
+                    <navigationItem key="navigationItem" title="Race Reviews" id="XdU-GK-Ksf">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="oka-tR-shb">
+                            <connections>
+                                <segue destination="VR1-Wh-VL1" kind="presentation" id="FeQ-ED-5lZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="f5b-Gf-HDf" id="dbC-It-CHY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xGD-kH-g4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1424.8" y="-227.13643178410797"/>
+            <point key="canvasLocation" x="1468" y="-227"/>
         </scene>
         <!--Race Reviews Tab Controller-->
         <scene sceneID="1Xs-0s-r9E">
@@ -167,6 +203,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Scy-RB-kqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="486" y="474"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="id2-i2-QZL">
+            <objects>
+                <navigationController storyboardIdentifier="AddRaceReviewNavController" automaticallyAdjustsScrollViewInsets="NO" id="VR1-Wh-VL1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rtV-7L-AOQ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VLv-cF-h98" kind="relationship" relationship="rootViewController" id="86s-GT-Rq0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9lb-1x-Fhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1464.8" y="-952.17391304347836"/>
         </scene>
     </scenes>
 </document>
