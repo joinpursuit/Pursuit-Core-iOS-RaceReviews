@@ -50,7 +50,7 @@ pod 'Firebase/Storage'
 - [x] present the login view controller when the user signs out
 - [x] existing user can sign in to the app 
 - [x] race review creation UI includes textfield to enter name and text view for review (firebase database)
-- [ ] user can create a review (create)
+- [x] user can create a review (create)
 - [ ] user can see an annotation on a MapView of their created review (read)
 - [ ] user can udpate a review (only if userId == reviewerId) (update) 
 - [ ] user can delete a review (only if userId == reviewerId) (delete) 
