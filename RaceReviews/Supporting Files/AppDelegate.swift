@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let storyboard = UIStoryboard(name: "RaceReviewsTab", bundle: nil)
       let raceReviewsTabController = storyboard.instantiateViewController(withIdentifier: "RaceReviewsTabController") as! RaceReviewsTabController
       window?.rootViewController = raceReviewsTabController
-      // TODO: create a subclass of UITabBarController()
       // name it "RaceReviewsTabController"
       // storyboard id should be "RaceReviewsTabController"
     }
@@ -38,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     else {
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-      // TODO: add to storyboard id "LoginViewController"
       window?.rootViewController = loginViewController
     }
     window?.makeKeyAndVisible()

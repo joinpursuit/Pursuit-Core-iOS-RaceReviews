@@ -30,7 +30,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="bS2-cM-j9e"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <state key="normal" title="Create">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -42,7 +42,7 @@
                         <constraint firstAttribute="height" constant="50" id="5wL-Ik-7U7"/>
                     </constraints>
                     <color key="textColor" red="0.18662351369857788" green="0.19142591953277588" blue="0.20527938008308411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vl7-52-jvV">
@@ -52,7 +52,7 @@
                         <constraint firstAttribute="height" constant="50" id="j93-SD-0Sg"/>
                     </constraints>
                     <color key="textColor" red="0.18662351369999999" green="0.19142591950000001" blue="0.20527938009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login into your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfT-GR-9F7">

@@ -44,7 +44,7 @@ extension LoginViewController: LoginViewDelegate {
 
 extension LoginViewController: UserSessionAccountCreationDelegate {
   func didCreateAccount(_ userSession: UserSession, user: User) {
-    showAlert(title: "Account Created", message: "Account created using \(user.email ?? "no email entered") ") { alertController in
+    showAlert(title: "Account Created", message: "Account created using \(user.email ?? "no email entered") ", style: .alert) { alertController in
       let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
         self.presentRaceReviewsTabController()
       }
@@ -64,7 +64,7 @@ extension LoginViewController: UserSessionSignInDelegate {
   }
   
   func didSignInExistingUser(_ usersession: UserSession, user: User) {
-    showAlert(title: "Welcome Back", message: "Hello, \(user.email ?? "no email entered") ") { alertController in
+    showAlert(title: "Welcome Back", message: "Hello, \(user.email ?? "no email entered") ",  style: .alert) { alertController in
       let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
         self.presentRaceReviewsTabController()
       }

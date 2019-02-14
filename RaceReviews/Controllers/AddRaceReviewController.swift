@@ -15,7 +15,7 @@ class AddRaceReviewController: UIViewController {
   
   private var raceTypes = [RaceType]()
   private var raceReviewPlaceholderText = "enter your race review"
-  private var selectedRaceType = "other"
+  private var selectedRaceType = "\(RaceType.allCases[0])" // default to first race type 
   private var usersession: UserSession!
   
   public var coordinate: CLLocationCoordinate2D!
@@ -45,7 +45,6 @@ class AddRaceReviewController: UIViewController {
       showAlert(title: "Not Authenticated!", message: "no logged user")
       return
     }
-    // TODO: properties we need: textfield info, textview info, pickerview info
     // all required to create a RaceReview()
     guard let raceName = addRaceReview.raceNameTextField.text,
       let review = addRaceReview.reviewTextView.text,
@@ -61,9 +60,16 @@ class AddRaceReviewController: UIViewController {
                                 type: selectedRaceType,
                                 lat: coordinate.latitude,
                                 lon: coordinate.longitude,
-                                reviewerId: user.uid)
+                                reviewerId: user.uid,
+                                dbReference: "") // reference will be set after document is created
     DatabaseManager.postRaceReviewToDatabase(raceReview: raceReview)
-    dismiss(animated: true)
+    showAlert(title: "Race Review Created", message: "Successfully created \(raceReview.name) race review",  style: .alert) { (alertController) in
+      let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
+        self.dismiss(animated: true)
+      }
+      alertController.addAction(okAction)
+      self.present(alertController, animated: true)
+    }
   }
 }
 
@@ -83,7 +89,6 @@ extension AddRaceReviewController: UIPickerViewDelegate {
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    print("selected race type: \(RaceType.allCases[row])")
     selectedRaceType = "\(RaceType.allCases[row])"
   }
 }

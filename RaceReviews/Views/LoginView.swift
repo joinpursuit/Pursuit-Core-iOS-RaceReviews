@@ -27,7 +27,7 @@ class LoginView: UIView {
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var accountMessageLabel: UILabel!
   
-  // gestures
+  // gesture to handle accepting tapping on the accountMessageLabel
   private var tapGesture: UITapGestureRecognizer!
   
   // setting default account state
@@ -69,7 +69,6 @@ class LoginView: UIView {
   }
   
   @objc private func loginButtonPressed() {
-    print("login button pressed with state: \(accountLoginState)")
     delegate?.didSelectLoginButton(self, accountLoginState: accountLoginState)
   }
   

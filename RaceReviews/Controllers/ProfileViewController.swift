@@ -35,20 +35,19 @@ class ProfileViewController: UITableViewController {
   @IBAction func signOutButtonPressed(_ sender: UIButton) {
     usersession.signOut()
   }
-  
 }
 
 extension ProfileViewController: UserSessionSignOutDelegate {
   func didRecieveSignOutError(_ usersession: UserSession, error: Error) {
-    print("didRecieveSignOutError: \(error)")
+    showAlert(title: "Sign Out Error", message: error.localizedDescription)
   }
   
   func didSignOutUser(_ usersession: UserSession) {
-    print("didSignOutUser successfully")
-    // present the login view controller
+    presentLoginViewController()
+  }
+  
+  private func presentLoginViewController() {
     let window = (UIApplication.shared.delegate as! AppDelegate).window
-    
-    // BUG HERE: "RaceReviewsTab" => "Main"
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
     window?.rootViewController = loginViewController

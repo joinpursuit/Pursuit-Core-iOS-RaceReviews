@@ -29,7 +29,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="180" id="xKG-l4-Xzr"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="enter the name of the race" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Y5-qt-uwq">
@@ -39,11 +39,11 @@
                         <constraint firstAttribute="height" constant="50" id="DCA-0i-KjV"/>
                     </constraints>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C27-zB-fvs">
-                    <rect key="frame" x="0.0" y="286" width="375" height="162"/>
+                    <rect key="frame" x="16" y="286" width="343" height="162"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="162" id="9hv-qR-q18"/>
@@ -54,11 +54,11 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9Y5-qt-uwq" secondAttribute="trailing" constant="16" id="3wq-5F-npu"/>
                 <constraint firstItem="g0T-Yq-pDG" firstAttribute="top" secondItem="9Y5-qt-uwq" secondAttribute="bottom" constant="8" id="DRW-bR-vhj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="C27-zB-fvs" secondAttribute="trailing" constant="16" id="ESl-RB-trl"/>
+                <constraint firstItem="C27-zB-fvs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="J50-LG-NKE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="g0T-Yq-pDG" secondAttribute="trailing" constant="16" id="MUz-6R-EBc"/>
                 <constraint firstItem="9Y5-qt-uwq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="N7B-s0-1T7"/>
-                <constraint firstItem="C27-zB-fvs" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="N7d-jh-YlK"/>
                 <constraint firstItem="9Y5-qt-uwq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="RuV-fR-t5s"/>
-                <constraint firstItem="C27-zB-fvs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gDI-q3-g65"/>
                 <constraint firstItem="g0T-Yq-pDG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="p5Y-H0-jtU"/>
                 <constraint firstItem="C27-zB-fvs" firstAttribute="top" secondItem="g0T-Yq-pDG" secondAttribute="bottom" constant="8" id="tJi-bS-uvu"/>
             </constraints>
