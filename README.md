@@ -54,6 +54,7 @@ pod 'Firebase/Storage'
 - [x] user can see an annotation on a MapView of their created review (read)
 - [ ] user can udpate a review (only if userId == reviewerId) (update) 
 - [x] user can delete a review (only if userId == reviewerId) (delete) 
+- [x] user can update profile image
 
 ## Race Review Model 
 
