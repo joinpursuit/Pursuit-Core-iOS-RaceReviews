@@ -21,6 +21,10 @@ class LoginViewController: UIViewController {
     usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
     usersession.userSessionAccountDelegate = self
     usersession.usersessionSignInDelegate = self
+    
+    // testing email, password
+    loginView.emailTextField.text = "@alex.com"
+    loginView.passwordTextFiled.text = "123456"
   }
 }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FirebaseFirestore
 
 class RaceReviewsController: UIViewController {
   
@@ -22,18 +23,28 @@ class RaceReviewsController: UIViewController {
     }
   }
   private var annoations = [MKAnnotation]()
+  private var listener: ListenerRegistration! // detach listener when no longer needed
   
   override func viewDidLoad() {
     super.viewDidLoad()
     configureLongPress()
-    fetchRaceRevies()
     mapView.delegate = self
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
+    fetchRaceRevies()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(true)
+    listener.remove()
   }
   
   private func fetchRaceRevies() {
     // add a listener to observe changes to the firestore database
     raceReviews.removeAll()
-    DatabaseManager.firebaseDB.collection(DatabaseKeys.RaceReviewCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
+    listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.RaceReviewCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
       if let error = error {
         self.showAlert(title: "Network Error", message: error.localizedDescription)
       } else if let snapshot = snapshot {
@@ -117,3 +128,4 @@ extension RaceReviewsController: MKMapViewDelegate {
     mapView.deselectAnnotation(annotation, animated: true)
   }
 }
+

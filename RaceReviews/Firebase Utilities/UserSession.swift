@@ -42,12 +42,14 @@ final class UserSession {
           return
         }
         // add user to database
+        // use the user.uid as the document id for ease of use when updating / querying current user
         DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey)
-          .addDocument(data: ["userId"      : authDataResult.user.uid, 
-                              "email"       : authDataResult.user.email ?? "",
-                              "displayName" : authDataResult.user.displayName ?? "",
-                              "imageURL"    : authDataResult.user.photoURL ?? "",
-                              "username"    : username
+          .document(authDataResult.user.uid.description)
+          .setData(["userId"      : authDataResult.user.uid,
+                    "email"       : authDataResult.user.email ?? "",
+                    "displayName" : authDataResult.user.displayName ?? "",
+                    "imageURL"    : authDataResult.user.photoURL ?? "",
+                    "username"    : username
             ], completion: { (error) in
               if let error = error {
                 print("error adding authenticated user to the database: \(error)")
@@ -81,6 +83,33 @@ final class UserSession {
       usersessionSignOutDelegate?.didSignOutUser(self)
     } catch {
       usersessionSignOutDelegate?.didRecieveSignOutError(self, error: error)
+    }
+  }
+  
+  public func updateUser(displayName: String?, photoURL: URL?) {
+    guard let user = getCurrentUser() else {
+      print("no logged user")
+      return
+    }
+    let request = user.createProfileChangeRequest()
+    request.displayName = displayName
+    request.photoURL = photoURL
+    request.commitChanges { (error) in
+      if let error = error {
+        print("error: \(error)")
+      } else {
+        // TODO: update database user as well
+        guard let photoURL = photoURL else {
+          print("no photoURL")
+          return
+        }
+        DatabaseManager.firebaseDB
+          .collection(DatabaseKeys.UsersCollectionKey)
+          .document(user.uid) // TODO: user document id should maybe be the same as userId on creation of database user
+          .updateData(["imageURL": photoURL.absoluteString], completion: { (error) in
+          
+        })
+      }
     }
   }
 }
