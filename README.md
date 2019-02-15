@@ -156,7 +156,9 @@ service cloud.firestore {
 ## Database Structure 
 
 **users collection**  
-![users collection]("https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/users-collection.png") 
+![users collection]("https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/users-collection.png")   
+
+</br>
 
 **raceReviews collection** 
-![race reviews collection]("https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/race-reviews-collection.png")
+![race reviews collection]("https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/race-reviews-collection.png")   
