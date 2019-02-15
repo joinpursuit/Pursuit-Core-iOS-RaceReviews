@@ -17,6 +17,7 @@
                 <outlet property="dismissButton" destination="0cQ-Fg-6no" id="luM-nm-MES"/>
                 <outlet property="raceNameLabel" destination="glc-bx-183" id="u2v-OV-bOn"/>
                 <outlet property="raceReviewTextView" destination="HIo-N2-hnr" id="9Gy-lQ-Z5v"/>
+                <outlet property="reviewersProfileImageView" destination="OV9-iJ-URZ" id="y4R-UI-vdS"/>
                 <outlet property="usernameLabel" destination="jN0-73-Xu3" id="4d2-26-ENI"/>
             </connections>
         </placeholder>
@@ -47,7 +48,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HIo-N2-hnr">
-                                        <rect key="frame" x="8" y="37" width="284" height="340.5"/>
+                                        <rect key="frame" x="8" y="85" width="284" height="292.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
@@ -66,11 +67,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="OV9-iJ-URZ" customClass="CircularImageView" customModule="RaceReviews" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="37" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0MU-PD-hW6"/>
+                                            <constraint firstAttribute="width" constant="40" id="n1Z-6g-hRs"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="jN0-73-Xu3" firstAttribute="leading" secondItem="1ty-gM-ZO3" secondAttribute="leading" constant="8" id="1JD-FN-FIZ"/>
-                                    <constraint firstItem="HIo-N2-hnr" firstAttribute="top" secondItem="glc-bx-183" secondAttribute="bottom" constant="8" id="48H-bx-xTh"/>
+                                    <constraint firstItem="HIo-N2-hnr" firstAttribute="top" secondItem="OV9-iJ-URZ" secondAttribute="bottom" constant="8" id="7QP-KJ-99d"/>
                                     <constraint firstItem="HIo-N2-hnr" firstAttribute="leading" secondItem="1ty-gM-ZO3" secondAttribute="leading" constant="8" id="7sc-jU-aMy"/>
                                     <constraint firstAttribute="trailing" secondItem="jN0-73-Xu3" secondAttribute="trailing" constant="8" id="Mqe-Eh-2nv"/>
                                     <constraint firstAttribute="trailing" secondItem="HIo-N2-hnr" secondAttribute="trailing" constant="8" id="SM2-BJ-LZ5"/>
@@ -78,7 +86,9 @@
                                     <constraint firstItem="W9b-1T-tvV" firstAttribute="centerX" secondItem="1ty-gM-ZO3" secondAttribute="centerX" id="XXN-0f-lbt"/>
                                     <constraint firstItem="W9b-1T-tvV" firstAttribute="top" secondItem="jN0-73-Xu3" secondAttribute="bottom" constant="8" id="cLe-FK-Okv"/>
                                     <constraint firstItem="jN0-73-Xu3" firstAttribute="top" secondItem="HIo-N2-hnr" secondAttribute="bottom" constant="8" id="eXI-7t-552"/>
+                                    <constraint firstItem="OV9-iJ-URZ" firstAttribute="leading" secondItem="1ty-gM-ZO3" secondAttribute="leading" constant="8" id="k9d-OS-uF9"/>
                                     <constraint firstAttribute="bottom" secondItem="W9b-1T-tvV" secondAttribute="bottom" constant="8" id="mCN-CP-GCn"/>
+                                    <constraint firstItem="OV9-iJ-URZ" firstAttribute="top" secondItem="glc-bx-183" secondAttribute="bottom" constant="8" id="v3l-f3-dBk"/>
                                     <constraint firstAttribute="trailing" secondItem="glc-bx-183" secondAttribute="trailing" constant="8" id="wxa-iS-PXV"/>
                                     <constraint firstItem="glc-bx-183" firstAttribute="leading" secondItem="1ty-gM-ZO3" secondAttribute="leading" constant="8" id="xon-LX-pUq"/>
                                 </constraints>
@@ -109,4 +119,7 @@
             <point key="canvasLocation" x="138.40000000000001" y="154.27286356821591"/>
         </view>
     </objects>
+    <resources>
+        <image name="placeholder-image" width="512" height="512"/>
+    </resources>
 </document>

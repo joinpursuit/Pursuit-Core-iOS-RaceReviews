@@ -45,9 +45,29 @@ class ReviewDetailController: UIViewController {
           print("no document found")
           return
         }
-        if let username = firstDocument.data()["username"] as? String {
-          self.detailView.usernameLabel.text = "reviewed by @\(username)"
+        let reviewer = RRUser(dict: firstDocument.data())
+        DispatchQueue.main.async {
+          self.detailView.usernameLabel.text = "reviewed by @\(reviewer.username ?? "no ussername")"
         }
+        
+        // setting up image url
+        guard let imageURL = reviewer.imageURL,
+         !imageURL.isEmpty else {
+          print("no imageURL")
+          return
+        }
+        if let image = ImageCache.shared.fetchImageFromCache(urlString: imageURL) {
+          self.detailView.reviewersProfileImageView.image = image
+        } else {
+          ImageCache.shared.fetchImageFromNetwork(urlString: imageURL) { (appError, image) in
+            if let appError = appError {
+              self.showAlert(title: "Fetching Image Error", message: appError.errorMessage())
+            } else if let image = image {
+              self.detailView.reviewersProfileImageView.image = image
+            }
+          }
+        }
+        
       }
     }
   }

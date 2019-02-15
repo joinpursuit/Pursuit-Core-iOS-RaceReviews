@@ -107,6 +107,11 @@ final class UserSession {
           .collection(DatabaseKeys.UsersCollectionKey)
           .document(user.uid) // TODO: user document id should maybe be the same as userId on creation of database user
           .updateData(["imageURL": photoURL.absoluteString], completion: { (error) in
+            guard let error = error else {
+              print("successfully ")
+              return
+            }
+            print("updating photo url error: \(error.localizedDescription)")
           
         })
       }

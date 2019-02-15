@@ -11,6 +11,7 @@ import UIKit
 class DetailView: UIView {
   
   @IBOutlet var contentView: UIView!
+  @IBOutlet weak var reviewersProfileImageView: CircularImageView!
   @IBOutlet weak var raceNameLabel: UILabel!
   @IBOutlet weak var raceReviewTextView: UITextView!
   @IBOutlet weak var dismissButton: UIButton!

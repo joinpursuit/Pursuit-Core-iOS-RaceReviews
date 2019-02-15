@@ -29,6 +29,7 @@
 		57C2547222163DB400C02F97 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2547122163DB400C02F97 /* ImageCache.swift */; };
 		57C2547422163DE800C02F97 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2547322163DE800C02F97 /* NetworkHelper.swift */; };
 		57C2547622163E0C00C02F97 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2547522163E0C00C02F97 /* AppError.swift */; };
+		57C254792217061400C02F97 /* RRUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C254782217061400C02F97 /* RRUser.swift */; };
 		57C51A7A2211CD0900FE8CE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C51A792211CD0900FE8CE5 /* AppDelegate.swift */; };
 		57C51A7C2211CD0900FE8CE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C51A7B2211CD0900FE8CE5 /* LoginViewController.swift */; };
 		57C51A7F2211CD0900FE8CE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C51A7D2211CD0900FE8CE5 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		57C2547122163DB400C02F97 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		57C2547322163DE800C02F97 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		57C2547522163E0C00C02F97 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		57C254782217061400C02F97 /* RRUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRUser.swift; sourceTree = "<group>"; };
 		57C51A762211CD0900FE8CE5 /* RaceReviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaceReviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C51A792211CD0900FE8CE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C51A7B2211CD0900FE8CE5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		570D8BF72214DF21009C2957 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				57C254782217061400C02F97 /* RRUser.swift */,
 				570A6BC02214136C00C19886 /* RaceReview.swift */,
 				57C2544B2215857A00C02F97 /* RaceType.swift */,
 			);
@@ -405,6 +408,7 @@
 				57C51A8E2211D0DB00FE8CE5 /* LoginView.swift in Sources */,
 				57C2544C2215857A00C02F97 /* RaceType.swift in Sources */,
 				570A6BAE221332CE00C19886 /* RaceReviewsController.swift in Sources */,
+				57C254792217061400C02F97 /* RRUser.swift in Sources */,
 				57C2547222163DB400C02F97 /* ImageCache.swift in Sources */,
 				570A6BBD22140EE800C19886 /* AddRaceReview.swift in Sources */,
 				57C51A7C2211CD0900FE8CE5 /* LoginViewController.swift in Sources */,

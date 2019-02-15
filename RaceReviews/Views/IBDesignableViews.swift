@@ -19,3 +19,15 @@ class CircularButton: UIButton {
     clipsToBounds = true
   }
 }
+
+@IBDesignable
+class CircularImageView: UIImageView {
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    contentMode = .scaleAspectFill
+    layer.cornerRadius = bounds.width / 2.0
+    layer.borderColor = UIColor.lightGray.cgColor
+    layer.borderWidth = 0.5
+    clipsToBounds = true
+  }
+}
