@@ -54,6 +54,7 @@ pod 'Firebase/Storage'
 - [x] user can see an annotation on a MapView of their created review (read)
 - [ ] user can udpate a review (only if userId == reviewerId) (update) 
 - [x] user can delete a review (only if userId == reviewerId) (delete) 
+- [x] user can update profile image
 
 ## Race Review Model 
 
@@ -61,40 +62,36 @@ pod 'Firebase/Storage'
 import Foundation
 import CoreLocation
 
-enum RaceType: CaseIterable {
-  case swimming
-  case biking
-  case running
-  case obstacle
-  case other
-}
-
 struct RaceReview {
   let name: String
   let review: String
-  let type: RaceType
+  let type: String
   let lat: Double
   let lon: Double
   let reviewerId: String
+  let dbReferenceDocumentId: String // reference to the race review document, useful for e.g deleting
   
-  init(name: String, review: String, type: RaceType, lat: Double, lon: Double, reviewerId: String) {
+  init(name: String, review: String, type: String, lat: Double, lon: Double, reviewerId: String, dbReference: String) {
     self.name = name
     self.review = review
     self.type = type
     self.lat = lat
     self.lon = lon
     self.reviewerId = reviewerId
+    self.dbReferenceDocumentId = dbReference
   }
   
   init(dict: [String: Any]) {
-    self.name = dict["name"] as? String ?? "no race name"
-    self.review = dict["review"] as? String ?? "no race review"
-    self.type = dict["type"] as? RaceType ?? .other
-    self.lat = dict["lat"] as? Double ?? 0
-    self.lon = dict["lon"] as? Double ?? 0
+    self.name = dict["raceName"] as? String ?? "no race name"
+    self.review = dict["raceReview"] as? String ?? "no race review"
+    self.type = dict["raceType"] as? String ?? "other"
+    self.lat = dict["latitude"] as? Double ?? 0
+    self.lon = dict["longitude"] as? Double ?? 0
     self.reviewerId = dict["reviewerId"] as? String ?? "no reviewerId"
+    self.dbReferenceDocumentId = dict["dbReference"] as? String ?? "no dbReference"
   }
   
+  // computed property to return a coordinate from the given lat and lon properties
   public var coordinate: CLLocationCoordinate2D {
     return CLLocationCoordinate2DMake(lat, lon)
   }
