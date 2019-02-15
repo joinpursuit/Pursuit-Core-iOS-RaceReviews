@@ -151,3 +151,18 @@ service cloud.firestore {
     }
   }
 }
+```
+
+## Database Structure 
+
+**users collection**  
+<p align="center">
+  <img src="https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/users-collection.png" width="1256" height="534" />
+</p> 
+
+</br> 
+
+**raceReviews collection**  
+<p align="center">
+  <img src="https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/race-reviews-collection.png" width="1256" height="534" />
+</p>
