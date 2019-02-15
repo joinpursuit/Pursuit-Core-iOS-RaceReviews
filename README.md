@@ -155,12 +155,12 @@ service cloud.firestore {
 
 ## Database Structure 
 
-**users collection**  
+**users collection**    
 
 ![users collection]("https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/users-collection.png")   
 
 </br>
 
-**raceReviews collection**  
+**raceReviews collection**    
 
 ![race reviews collection]("https://github.com/joinpursuit/Pursuit-Core-iOS-RaceReviews/blob/master/Images/race-reviews-collection.png")   
