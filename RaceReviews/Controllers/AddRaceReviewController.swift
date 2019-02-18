@@ -42,7 +42,7 @@ class AddRaceReviewController: UIViewController {
   // function to create RaceReview and post to the database
   @IBAction func addRaceReviewButtonPressed(_ sender: UIBarButtonItem) {
     guard let user = usersession.getCurrentUser() else {
-      showAlert(title: "Not Authenticated!", message: "no logged user")
+      showAlert(title: "Not Authenticated!", message: "no logged user", actionTitle: "Ok")
       return
     }
     // all required to create a RaceReview()
@@ -50,7 +50,7 @@ class AddRaceReviewController: UIViewController {
       let review = addRaceReview.reviewTextView.text,
       !raceName.isEmpty,
       !review.isEmpty else {
-        showAlert(title: "Missing Fields", message: "Race Name and Review Required")
+        showAlert(title: "Missing Fields", message: "Race Name and Review Required", actionTitle: "Try Again")
         return
     }
     
@@ -63,12 +63,9 @@ class AddRaceReviewController: UIViewController {
                                 reviewerId: user.uid,
                                 dbReference: "") // reference will be set after document is created
     DatabaseManager.postRaceReviewToDatabase(raceReview: raceReview)
-    showAlert(title: "Race Review Created", message: "Successfully created \(raceReview.name) race review",  style: .alert) { (alertController) in
-      let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
-        self.dismiss(animated: true)
-      }
-      alertController.addAction(okAction)
-      self.present(alertController, animated: true)
+    
+    showAlert(title: "Race Review Created", message: "Successfully created \(raceReview.name) race review", style: .alert) { (action) in
+      self.dismiss(animated: true)
     }
   }
 }

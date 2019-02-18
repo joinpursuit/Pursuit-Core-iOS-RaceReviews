@@ -24,21 +24,38 @@ class RaceReviewsController: UIViewController {
   }
   private var annoations = [MKAnnotation]()
   private var listener: ListenerRegistration! // detach listener when no longer needed
+  private var locationResultsController: LocationsResultsController = {
+    let storyboard = UIStoryboard(name: "LocationResults", bundle: nil)
+    let locationController = storyboard.instantiateViewController(withIdentifier: "LocationsResultsController") as! LocationsResultsController
+    return locationController
+  }()
+  private lazy var searchController: UISearchController = {
+    let sc = UISearchController(searchResultsController: locationResultsController)
+    sc.searchResultsUpdater = locationResultsController
+    sc.hidesNavigationBarDuringPresentation = false
+    sc.searchBar.placeholder = "search for race location"
+    sc.dimsBackgroundDuringPresentation = false
+    sc.obscuresBackgroundDuringPresentation = false
+    definesPresentationContext = true
+    sc.searchBar.autocapitalizationType = .none
+    return sc
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     configureLongPress()
     mapView.delegate = self
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(true)
+    configureNavBar()
+    
+    locationResultsController.delegate = self
+    
     fetchRaceRevies()
   }
   
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(true)
-    listener.remove()
+  private func configureNavBar() {
+    navigationController?.navigationBar.prefersLargeTitles = true
+    navigationItem.largeTitleDisplayMode = .automatic
+    navigationItem.searchController = searchController
   }
   
   private func fetchRaceRevies() {
@@ -46,7 +63,7 @@ class RaceReviewsController: UIViewController {
     raceReviews.removeAll()
     listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.RaceReviewCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
       if let error = error {
-        self.showAlert(title: "Network Error", message: error.localizedDescription)
+        self.showAlert(title: "Network Error", message: error.localizedDescription, actionTitle: "Ok")
       } else if let snapshot = snapshot {
         var reviews = [RaceReview]()
         for document in snapshot.documents {
@@ -104,7 +121,6 @@ class RaceReviewsController: UIViewController {
   }
 }
 
-
 extension RaceReviewsController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     let detailStoryboard = UIStoryboard(name: "ReviewDetail", bundle: nil)
@@ -128,4 +144,18 @@ extension RaceReviewsController: MKMapViewDelegate {
     mapView.deselectAnnotation(annotation, animated: true)
   }
 }
+
+extension RaceReviewsController: LocationResultsControllerDelegate {
+  func didSelectCoordinate(_ locationResultsController: LocationsResultsController, coordinate: CLLocationCoordinate2D) {
+    let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500_000, longitudinalMeters: 500_000)
+    mapView.setRegion(region, animated: true)
+  }
+  
+  func didScrollTableView(_ locationResultsController: LocationsResultsController) {
+    searchController.searchBar.resignFirstResponder()
+  }
+}
+
+
+
 

@@ -14,9 +14,7 @@ protocol StorageManagerDelegate: AnyObject {
   func didFetchImage(_ storageManager: StorageManager, imageURL: URL)
 }
 
-final class StorageManager {
-  //private init() {}
-  
+final class StorageManager {  
   weak var delegate: StorageManagerDelegate?
   
   // reference to the firebsase storage app
@@ -50,7 +48,6 @@ final class StorageManager {
         }
       })
     }
-    
     // observe states on uploadTask
     uploadTask.observe(.failure) { (storageTaskSnapshot) in
       print("failure...")
@@ -67,9 +64,5 @@ final class StorageManager {
     uploadTask.observe(.success) { (storageTaskSnapshot) in
       print("success...")
     }
-  }
-  
-  public func downloadImage(withURL url: URL) {
-    
   }
 }

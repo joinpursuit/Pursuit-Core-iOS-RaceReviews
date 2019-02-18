@@ -98,14 +98,14 @@ final class UserSession {
       if let error = error {
         print("error: \(error)")
       } else {
-        // TODO: update database user as well
+        // update database user as well
         guard let photoURL = photoURL else {
           print("no photoURL")
           return
         }
         DatabaseManager.firebaseDB
           .collection(DatabaseKeys.UsersCollectionKey)
-          .document(user.uid) // TODO: user document id should maybe be the same as userId on creation of database user
+          .document(user.uid) // making the user document id the same as the auth userId makes it easy to update the user doc
           .updateData(["imageURL": photoURL.absoluteString], completion: { (error) in
             guard let error = error else {
               print("successfully ")

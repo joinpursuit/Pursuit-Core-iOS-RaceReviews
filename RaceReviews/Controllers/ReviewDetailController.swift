@@ -39,7 +39,7 @@ class ReviewDetailController: UIViewController {
       .UsersCollectionKey).whereField("userId", isEqualTo: raceReview.reviewerId)
     query.getDocuments { (snapshot, error) in
       if let error = error {
-        self.showAlert(title: "Network Error", message: error.localizedDescription)
+        self.showAlert(title: "Network Error", message: error.localizedDescription, actionTitle: "Try Again")
       } else if let snapshot = snapshot {
         guard let firstDocument = snapshot.documents.first else {
           print("no document found")
@@ -61,7 +61,7 @@ class ReviewDetailController: UIViewController {
         } else {
           ImageCache.shared.fetchImageFromNetwork(urlString: imageURL) { (appError, image) in
             if let appError = appError {
-              self.showAlert(title: "Fetching Image Error", message: appError.errorMessage())
+              self.showAlert(title: "Fetching Image Error", message: appError.errorMessage(), actionTitle: "Ok")
             } else if let image = image {
               self.detailView.reviewersProfileImageView.image = image
             }
@@ -88,12 +88,8 @@ class ReviewDetailController: UIViewController {
   }
   
   @objc private func deleteRaceReview() {
-    showAlert(title: "Confirm Delete", message: "Please confirm that you want to delete your created race review. This action cannot be undone", style: .actionSheet) { (alertController) in
-      let deleteAction = UIAlertAction(title: "Confirm Delete", style: .destructive, handler: { (delete) in
-        self.executeDeletion()
-      })
-      alertController.addAction(deleteAction)
-      self.present(alertController, animated: true)
+    showDestructionAlert(title: "Confirm Delete", message: "Please confirm that you want to delete your created race review. This action cannot be undone", style: .actionSheet) { (action) in
+      self.executeDeletion()
     }
   }
   
@@ -102,14 +98,10 @@ class ReviewDetailController: UIViewController {
       .collection(DatabaseKeys.RaceReviewCollectionKey)
       .document(raceReview.dbReferenceDocumentId).delete { (error) in
         if let error = error {
-          self.showAlert(title: "Deleting Error", message: error.localizedDescription)
+          self.showAlert(title: "Deleting Error", message: error.localizedDescription, actionTitle: "Try Again")
         } else {
-          self.showAlert(title: "", message: "Race Review was deleted successfully",  style: .alert, handler: { (alertController) in
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (alert) in
-              self.dismiss(animated: true)
-            })
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true)
+          self.showAlert(title: nil, message: "Race Review was deleted successfully", style: .alert, handler: { (action) in
+            self.dismiss(animated: true)
           })
         }
     }

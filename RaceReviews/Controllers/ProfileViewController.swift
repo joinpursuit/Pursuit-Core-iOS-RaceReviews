@@ -54,7 +54,7 @@ class ProfileViewController: UITableViewController {
     } else {
       ImageCache.shared.fetchImageFromNetwork(urlString: photoURL.absoluteString) { (appError, image) in
         if let appError = appError {
-          self.showAlert(title: "Fetching Image Error", message: appError.errorMessage())
+          self.showAlert(title: "Fetching Image Error", message: appError.errorMessage(), actionTitle: "Ok")
         } else if let image = image {
           self.profileImageButton.setImage(image, for: .normal)
         }
@@ -67,22 +67,22 @@ class ProfileViewController: UITableViewController {
   }
   
   @IBAction func showPhotoActionSheet(_ button: UIButton) {
-    showAlert(title: nil, message: nil, style: .actionSheet) { (alertController) in
-      let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
-        self.imagePickerController.sourceType = .camera
-        self.showImagePickerController()
-      }
-      let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
-        self.imagePickerController.sourceType = .photoLibrary
-        self.showImagePickerController()
-      }
-      if UIImagePickerController.isSourceTypeAvailable(.camera) {
-        alertController.addAction(cameraAction)
-      }
-      alertController.addAction(photoLibrary)
-      alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-      self.present(alertController, animated: true)
+    
+    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+      self.imagePickerController.sourceType = .camera
+      self.showImagePickerController()
     }
+    let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+      self.imagePickerController.sourceType = .photoLibrary
+      self.showImagePickerController()
+    }
+    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+      alertController.addAction(cameraAction)
+    }
+    alertController.addAction(photoLibrary)
+    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    self.present(alertController, animated: true)
   }
   
   private func showImagePickerController() {
@@ -92,7 +92,7 @@ class ProfileViewController: UITableViewController {
 
 extension ProfileViewController: UserSessionSignOutDelegate {
   func didRecieveSignOutError(_ usersession: UserSession, error: Error) {
-    showAlert(title: "Sign Out Error", message: error.localizedDescription)
+    showAlert(title: "Sign Out Error", message: error.localizedDescription, actionTitle: "Ok")
   }
   
   func didSignOutUser(_ usersession: UserSession) {
@@ -100,10 +100,28 @@ extension ProfileViewController: UserSessionSignOutDelegate {
   }
   
   private func presentLoginViewController() {
-    let window = (UIApplication.shared.delegate as! AppDelegate).window
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-    window?.rootViewController = loginViewController
+    
+    
+//    let window = (UIApplication.shared.delegate as! AppDelegate).window
+//    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+//    window?.rootViewController = loginViewController
+    
+    
+    if let _ = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController as? UITabBarController {
+      // coming from existing sign in state (tab bar controller is rootViewController)
+      let window = (UIApplication.shared.delegate as! AppDelegate).window
+      
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+      window?.rootViewController = loginViewController
+      
+      //window?.rootViewController = UINavigationController(rootViewController: LoginController())
+    } else {
+      // coming from new login state (login view controller is rootViewController)
+      dismiss(animated: true)
+    }
+    
   }
 }
 
@@ -114,16 +132,17 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-      showAlert(title: "Error with Image", message: "Try Again")
+      showAlert(title: "Error with Image", message: "Try Again", actionTitle: "Ok")
       return
     }
     profileImageButton.setImage(originalImage, for: .normal)
-        
-    // TODO: both the authenticated user's photoURL and database user's imageURL
+
+    // convert the image to Data for posting to Firebase Storage
     guard let imageData = originalImage.jpegData(compressionQuality: 0.5) else {
       print("failed to create data from image")
       return
     }
+    // save the image to Firebase Storage
     storageManager.postImage(withData: imageData)
     
     dismiss(animated: true)
@@ -132,6 +151,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 extension ProfileViewController: StorageManagerDelegate {
   func didFetchImage(_ storageManager: StorageManager, imageURL: URL) {
+    // update the auth user's photoURL
     usersession.updateUser(displayName: nil, photoURL: imageURL)
   }
 }

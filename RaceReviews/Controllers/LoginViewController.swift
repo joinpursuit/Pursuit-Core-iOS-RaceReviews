@@ -21,10 +21,6 @@ class LoginViewController: UIViewController {
     usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
     usersession.userSessionAccountDelegate = self
     usersession.usersessionSignInDelegate = self
-    
-    // testing email, password
-    loginView.emailTextField.text = "@alex.com"
-    loginView.passwordTextFiled.text = "123456"
   }
 }
 
@@ -34,7 +30,7 @@ extension LoginViewController: LoginViewDelegate {
       let password = loginView.passwordTextFiled.text,
       !email.isEmpty,
       !password.isEmpty else {
-        showAlert(title: "Missing Required Fields", message: "Email and Password Required")
+        showAlert(title: "Missing Required Fields", message: "Email and Password Required", actionTitle: "Try Again")
         return
     }
     switch accountLoginState {
@@ -48,33 +44,23 @@ extension LoginViewController: LoginViewDelegate {
 
 extension LoginViewController: UserSessionAccountCreationDelegate {
   func didCreateAccount(_ userSession: UserSession, user: User) {
-    showAlert(title: "Account Created", message: "Account created using \(user.email ?? "no email entered") ", style: .alert) { alertController in
-      let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
-        self.presentRaceReviewsTabController()
-      }
-      alertController.addAction(okAction)
-      self.present(alertController, animated: true)
+    showAlert(title: "Account Created", message: "Account created using \(user.email ?? "no email entered") ", style: .alert) { (alert) in
+      self.presentRaceReviewsTabController()
     }
   }
   
   func didRecieveErrorCreatingAccount(_ userSession: UserSession, error: Error) {
-    showAlert(title: "Account Creation Error", message: error.localizedDescription)
+    showAlert(title: "Account Creation Error", message: error.localizedDescription, actionTitle: "Try Again")
   }
 }
 
 extension LoginViewController: UserSessionSignInDelegate {
   func didRecieveSignInError(_ usersession: UserSession, error: Error) {
-    showAlert(title: "Sign In Error", message: error.localizedDescription)
+    showAlert(title: "Sign In Error", message: error.localizedDescription, actionTitle: "Try Again")
   }
   
   func didSignInExistingUser(_ usersession: UserSession, user: User) {
-    showAlert(title: "Welcome Back", message: "Hello, \(user.email ?? "no email entered") ",  style: .alert) { alertController in
-      let okAction = UIAlertAction(title: "Ok", style: .default) { alert in
-        self.presentRaceReviewsTabController()
-      }
-      alertController.addAction(okAction)
-      self.present(alertController, animated: true)
-    }
+    self.presentRaceReviewsTabController()
   }
   
   private func presentRaceReviewsTabController() {

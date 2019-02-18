@@ -11,8 +11,6 @@ import Foundation
 struct RRUser {
   let username: String?
   let imageURL: String?
-  //let userId: String
-  //let dbReference: String
   
   init(dict: [String: Any]) {
     self.username = dict["username"] as? String ?? "no username"
