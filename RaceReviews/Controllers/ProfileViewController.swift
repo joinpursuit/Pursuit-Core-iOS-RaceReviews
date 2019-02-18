@@ -67,7 +67,6 @@ class ProfileViewController: UITableViewController {
   }
   
   @IBAction func showPhotoActionSheet(_ button: UIButton) {
-    
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
       self.imagePickerController.sourceType = .camera
@@ -100,14 +99,6 @@ extension ProfileViewController: UserSessionSignOutDelegate {
   }
   
   private func presentLoginViewController() {
-    
-    
-//    let window = (UIApplication.shared.delegate as! AppDelegate).window
-//    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-//    window?.rootViewController = loginViewController
-    
-    
     if let _ = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController as? UITabBarController {
       // coming from existing sign in state (tab bar controller is rootViewController)
       let window = (UIApplication.shared.delegate as! AppDelegate).window
@@ -115,13 +106,10 @@ extension ProfileViewController: UserSessionSignOutDelegate {
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
       window?.rootViewController = loginViewController
-      
-      //window?.rootViewController = UINavigationController(rootViewController: LoginController())
     } else {
       // coming from new login state (login view controller is rootViewController)
       dismiss(animated: true)
     }
-    
   }
 }
 

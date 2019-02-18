@@ -26,7 +26,6 @@ class LocationsResultsController: UIViewController {
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
-    
     searchCompleter.delegate = self
   }
 }
