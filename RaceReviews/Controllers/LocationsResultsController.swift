@@ -18,7 +18,7 @@ class LocationsResultsController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   private let searchCompleter = MKLocalSearchCompleter()
-  private var completerResults: [MKLocalSearchCompletion]?
+  private var completerResults = [MKLocalSearchCompletion]()
   
   weak var delegate: LocationResultsControllerDelegate?
   
@@ -32,34 +32,34 @@ class LocationsResultsController: UIViewController {
 
 extension LocationsResultsController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return completerResults?.count ?? 0
+    return completerResults.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
     
-    if let suggestion = completerResults?[indexPath.row] {
-      // Each suggestion is a MKLocalSearchCompletion with a title, subtitle
-      cell.textLabel?.text = suggestion.title
-      cell.detailTextLabel?.text = suggestion.subtitle
-    }
+    let suggestion = completerResults[indexPath.row]
+    // Each suggestion is a MKLocalSearchCompletion with a title, subtitle
+    cell.textLabel?.text = suggestion.title
+    cell.detailTextLabel?.text = suggestion.subtitle
+    
     return cell
   }
 }
 
 extension LocationsResultsController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let suggestion = completerResults?[indexPath.row] {
-      let addressString = suggestion.subtitle.isEmpty ? suggestion.title : suggestion.subtitle
-      LocationService.getCoordinate(addressString: addressString) { (coordinate, error) in
-        if let error = error {
-          print("error getting coordinate: \(error)")
-        } else {
-          print(coordinate)
-          self.delegate?.didSelectCoordinate(self, coordinate: coordinate)
-        }
+    let suggestion = completerResults[indexPath.row]
+    let addressString = suggestion.subtitle.isEmpty ? suggestion.title : suggestion.subtitle
+    LocationService.getCoordinate(addressString: addressString) { (coordinate, error) in
+      if let error = error {
+        print("error getting coordinate: \(error)")
+      } else {
+        print(coordinate)
+        self.delegate?.didSelectCoordinate(self, coordinate: coordinate)
       }
     }
+    
     dismiss(animated: true)
   }
 }

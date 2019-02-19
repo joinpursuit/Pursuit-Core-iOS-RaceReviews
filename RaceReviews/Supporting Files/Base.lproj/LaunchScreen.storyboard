@@ -18,24 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RaceReviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-4s-Exz">
-                                <rect key="frame" x="101.5" y="315.5" width="172.5" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="race-reviews-icon" translatesAutoresizingMaskIntoConstraints="NO" id="q0j-hL-G2p">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0SE-4s-Exz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="TFb-bh-rtk"/>
-                            <constraint firstItem="0SE-4s-Exz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="htC-66-emJ"/>
+                            <constraint firstItem="q0j-hL-G2p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O0k-TJ-uDr"/>
+                            <constraint firstItem="q0j-hL-G2p" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gzP-pb-GQv"/>
+                            <constraint firstItem="q0j-hL-G2p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uwF-Z0-ok5"/>
+                            <constraint firstItem="q0j-hL-G2p" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="y7Z-FR-rgY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="race-reviews-icon" width="384" height="384"/>
+    </resources>
 </document>
